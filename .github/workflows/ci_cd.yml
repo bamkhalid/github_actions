@@ -7,7 +7,10 @@ name: CI/CD Pipeline
 # DÉCLENCHEURS (Events)
 # ============================================================
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]  
 
 # ============================================================
 # JOBS (tâches)
@@ -18,7 +21,7 @@ jobs:
   # JOB 1 : Tests
   # ----------------------------------------------------------
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted 
 
     steps:
       # 1. Récupère le code du dépôt sur le runner
